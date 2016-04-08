@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Easyway_SkipShippingMethod>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Easyway_SkipShippingMethod>
+  </modules>
+</config>

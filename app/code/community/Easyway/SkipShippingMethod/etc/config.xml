@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+
+  <modules>
+    <Easyway_SkipShippingMethod>
+      <version>0.9.0</version>
+    </Easyway_SkipShippingMethod>
+  </modules>
+
+  <global>
+    <rewrite>
+      <Easyway_checkout_onepage>
+        <from><![CDATA[#^/checkout/onepage/#]]></from>
+        <to>/skipshippingmethod/checkout_onepage/</to>
+      </Easyway_checkout_onepage>
+    </rewrite>
+    <models>
+      <skipshippingmethod>
+        <class>Easyway_SkipShippingMethod_Model</class>
+      </skipshippingmethod>
+    </models>
+    <blocks>
+      <skipshippingmethod>
+        <class>Easyway_SkipShippingMethod_Block</class>
+      </skipshippingmethod>
+      <checkout>
+        <rewrite>
+          <onepage>Easyway_SkipShippingMethod_Block_Checkout_Onepage</onepage>
+        </rewrite>
+      </checkout>
+    </blocks>
+    <helpers>
+      <skipshippingmethod>
+        <class>Easyway_SkipShippingMethod_Helper</class>
+      </skipshippingmethod>
+    </helpers>
+  </global>
+
+  <frontend>
+    <routers>
+      <skipshippingmethod>
+        <use>standard</use>
+        <args>
+          <module>Easyway_SkipShippingMethod</module>
+          <frontName>skipshippingmethod</frontName>
+        </args>
+      </skipshippingmethod>
+    </routers>
+    <layout>
+            <updates>
+                <skipstep1>
+                    <file>skipstep1.xml</file>
+                </skipstep1>
+            </updates>
+        </layout>
+  </frontend>
+
+  <default>
+    <checkout>
+      <skipshippingmethod>
+        <enabled>0</enabled>
+        <method>first_available</method>
+        <error>Your order cannot be completed at this time as there is no shipping methods available for it. Please make neccessary changes in your shipping address.</error>
+      </skipshippingmethod>
+      <skipstep1>
+		<enabled>1</enabled>
+		<default_method>guest</default_method>
+		<plugandplay>1</plugandplay>
+		<login_link>1</login_link>
+      </skipstep1>
+    </checkout>
+  </default>
+
+</config>
